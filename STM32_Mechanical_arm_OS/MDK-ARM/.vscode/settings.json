@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "app.h": "c",
+        "uart.h": "c",
+        "initializer_list": "c",
+        "type_traits": "c",
+        "xstring": "c",
+        "xutility": "c",
+        "string": "c",
+        "cmsis_os.h": "c",
+        "dma.h": "c",
+        "main.h": "c",
+        "freertos.h": "c",
+        "servo.h": "c",
+        "tim.h": "c"
+    }
+}

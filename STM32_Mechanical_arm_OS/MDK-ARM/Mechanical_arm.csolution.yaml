@@ -1,0 +1,70 @@
+solution:
+  created-by: uv2csolution@1.0.0
+  created-for: CMSIS-Toolbox@2.0.0
+  packs:
+    - pack: Keil::STM32F1xx_DFP
+    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-NN
+    - pack: ARM::CMSIS-DSP
+  target-types:
+    - type: Mechanicalarm
+      device: STM32F103C8
+      processor:
+        trustzone: non-secure
+      compiler: AC6
+      add-path:
+        - ../Core/Inc
+        - ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+        - ../Drivers/STM32F1xx_HAL_Driver/Inc
+        - ../Middlewares/Third_Party/FreeRTOS/Source/include
+        - ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+        - ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3
+        - ../Drivers/CMSIS/Device/ST/STM32F1xx/Include
+        - ../Drivers/CMSIS/Include
+        - ../USER
+        - ../USER/APP
+        - ../USER/UART
+        - ../USER/Servo
+      debug: "on"
+      define:
+        - USE_HAL_DRIVER
+        - STM32F103xB
+        - __MICROLIB
+      optimize: none
+      misc:
+        - C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+            - -std=c99
+            - -Wno-packed
+            - -Wno-missing-variable-declarations
+            - -Wno-missing-prototypes
+            - -Wno-missing-noreturn
+            - -Wno-sign-conversion
+            - -Wno-nonportable-include-path
+            - -Wno-reserved-id-macro
+            - -Wno-unused-macros
+            - -Wno-documentation-unknown-command
+            - -Wno-documentation
+            - -Wno-license-management
+            - -Wno-parentheses-equality
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --xref
+            - --callgraph
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --info unused
+            - --info veneers
+            - --list
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+  projects:
+    - project: Mechanical_arm.cproject.yaml

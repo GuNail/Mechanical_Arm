@@ -1,0 +1,58 @@
+project:
+  linker:
+    - script: Mechanical_arm_Mechanicalarm.sct
+  groups:
+    - group: Application/MDK-ARM
+      files:
+        - file: startup_stm32f103xb.s
+          misc:
+            - ASM:
+                - -masm=auto
+    - group: Application/User/Core
+      files:
+        - file: ../Core/Src/main.c
+        - file: ../Core/Src/gpio.c
+        - file: ../Core/Src/freertos.c
+        - file: ../Core/Src/dma.c
+        - file: ../Core/Src/tim.c
+        - file: ../Core/Src/usart.c
+        - file: ../Core/Src/stm32f1xx_it.c
+        - file: ../Core/Src/stm32f1xx_hal_msp.c
+    - group: Drivers/STM32F1xx_HAL_Driver
+      files:
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
+        - file: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+    - group: Drivers/CMSIS
+      files:
+        - file: ../Core/Src/system_stm32f1xx.c
+    - group: Middlewares/FreeRTOS
+      files:
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+        - file: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/port.c
+    - group: USER
+      files:
+        - file: ../USER/APP/app.c
+        - file: ../USER/UART/UART.c
+        - file: ../USER/Servo/Servo.c
+  components:
+    - component: ARM::CMSIS:CORE
